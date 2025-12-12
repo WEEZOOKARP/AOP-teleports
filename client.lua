@@ -44,7 +44,7 @@ RegisterCommand("gotoaop", function(source, args)
     local playerPed = PlayerPedId()
     if args[1] ~= nil then
         if Config[args[1]] then
-            StartPlayerTeleport(PlayerId(), args[1].to, 0.0, false, true, true)
+            StartPlayerTeleport(PlayerId(), Config[args[1]].to, 0.0, false, true, true)
         else
             TriggerEvent('chat:addMessage', {
                 color = { 255, 0, 0 },
