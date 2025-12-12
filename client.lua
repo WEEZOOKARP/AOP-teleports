@@ -14,7 +14,7 @@ end
 
 local function getAopIds()
     local returnedString = "" 
-    for k,v in pairs(config) do
+    for k,v in pairs(Config) do
         returnedString = returnedString.. " "..k
     end
     return returnedString
@@ -42,7 +42,7 @@ end
 
 RegisterCommand("gotoaop", function(source, args)
     local playerPed = PlayerPedId()
-    if args[1] != nil then
+    if args[1] ~= nil then
         if Config[args[1]] then
             StartPlayerTeleport(PlayerId(), args[1].to, 0.0, false, true, true)
         else
