@@ -12,6 +12,14 @@ local function drawTxt3D(x,y,z, text)
     DrawText(_x,_y)
 end
 
+local function getAopIds()
+    local returnedString = "" 
+    for k,v in pairs(config)
+        returnedString = returnedString.. " "..k
+    end
+    return returnedString
+end
+
 local function createmarker(v)
     CreateThread(function()
         local sleep = 0
@@ -32,8 +40,19 @@ for k,v in pairs(Config) do
     createmarker(v)
 end
 
-RegisterCommand("gotoaop", function()
+RegisterCommand("gotoaop", function(source, args)
     local playerPed = PlayerPedId()
+    if args[1] != nil then
+        if Config[args[1]] then
+            StartPlayerTeleport(PlayerId(), args[1].to, 0.0, false, true, true)
+        else
+            TriggerEvent('chat:addMessage', {
+                color = { 255, 0, 0 },
+                multiline = true,
+                args = {"SYSTEM", "that aop doesn't exist!"}
+            })
+        end
+    end
     local playerCoords = GetEntityCoords(playerPed)
 
     for _, v in pairs(Config) do
@@ -45,3 +64,6 @@ RegisterCommand("gotoaop", function()
 end, false)
 
 RegisterKeyMapping('gotoaop', 'Interact with AOP tps', 'keyboard', 'e')
+TriggerEvent('chat:addSuggestion', '/gotoaop', 'Teleports you to the given AOP', {
+    { name="AOP ID", help="Available AOPs include :"..getAopIds() }
+})
