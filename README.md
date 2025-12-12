@@ -5,7 +5,7 @@ This is a basic script I chucked together from scratch in about 5 ish minutes no
 not perfect but who cares, it's small and clean so additions and fixes are simple.
 
 ### Config
-    {
+    ["mirrorpark"] = { -- this id can be used with the /gotoaop command to tp back
         label = "Mirror Park", -- text that appears inside teleport
         from = vector3(-1035.12, -2740.52, 20.17), -- where the entrance is
         to = vector3(1129.01, -646.23, 56.83), -- where you get teleported
