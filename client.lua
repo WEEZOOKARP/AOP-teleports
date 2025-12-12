@@ -14,7 +14,7 @@ end
 
 local function getAopIds()
     local returnedString = "" 
-    for k,v in pairs(config)
+    for k,v in pairs(config) do
         returnedString = returnedString.. " "..k
     end
     return returnedString
